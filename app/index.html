@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizmat App</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header -->
+    <header class="bg-gray-800 py-4 text-center flex items-center justify-center">
+        <!-- Flutter Logo -->
+        <svg width="40px" height="40px" class="mr-3" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <title>file_type_flutter</title>
+            <polyline
+                points="15.383 18.316 18.744 15.042 27.093 15.042 19.697 22.438 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316"
+                style="fill:#40d0fd" />
+            <polygon points="4.907 16.125 9.106 20.424 27.093 2.287 18.744 2.287 4.907 16.125"
+                style="fill:#41d0fd;isolation:isolate" />
+            <polygon points="11.176 22.479 15.435 26.675 19.697 22.438 15.383 18.316 11.176 22.479"
+                style="fill:#1fbcfd" />
+            <polygon points="15.435 26.675 19.697 22.438 26.989 29.813 18.593 29.813 15.435 26.675"
+                style="fill:#095a9d" />
+            <polygon points="15.435 26.675 19.406 25.354 18.068 24.057 15.435 26.675" style="fill:#0e5199" />
+        </svg>
+        <a href="../index.html" class="text-3xl md:text-4xl font-bold text-blue-400">Fizmat App</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Desktop Layout -->
+        <section class="hidden md:flex items-center justify-center bg-gray-800 p-8 rounded-lg shadow-lg space-x-8">
+            <!-- Text Section -->
+            <div class="w-1/2 pr-8">
+                <!-- 听说2022年有位神秘的学长创作了这款Fizmat App的‘杰作-->
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Бұрын, 2022-шы жылғы түлек Fizmat App деген сыйқырды жаратқан</h2>
+                <!-- 但可惜他像一阵风似的飘走了，把我们留在了‘杰作’的边缘。为了让Fizmat的学弟学妹们再次体验到这份‘杰作’的便利，我决定发挥我的‘无敌模仿’技能，重写了一遍！也希望这次它不会再被学长丢弃了！😄-->
+                <p class="text-lg text-gray-400 mb-6">Бірақ, өкінішке орай, ол желмен өз жеріне кеттіп, бізді бұл
+                    сыйқырдан қалдырды. Ал біз бұл қосымшаны қайтадан іске қостық! Сондай-ақ бұл жолы үлкен ағамыз
+                    сияқты сыйқырды қайтадан жоғалытпаймыз деген үміттемін! :) </p>
+
+                <a href="https://81an.github.io/"
+                    class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-400 transition-colors">Қосымшаны қолдану</a>
+                <p class="text-sm text-gray-400 mt-4">
+                    Бізге қосғыңыз келеді, немесе бізге сұрақ бар? <a href="https://github.com/arcbomi/fizmat-app" class="text-blue-300 hover:underline">Осы жерді бас</a>
+                </p>
+            </div>
+            <!-- Image Section -->
+            <div class="w-1/2 flex justify-center">
+                <div class="mockup-phone">
+                    <div class="camera"></div>
+                    <div class="display">
+                        <div class="artboard artboard-demo phone-1">
+                            <img src="app-image.png" alt="Fizmat App" class="w-full h-auto rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Mobile Layout -->
+        <section class="md:hidden flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg">
+            <!-- Image Section -->
+
+            <h2 class="text-center text-xl font-bold text-blue-400 mb-4">Бұрын, 2022-шы жылғы түлек Fizmat App деген сыйқырды жаратқан</h2>
+            <img src="app-image.png" alt="Fizmat App" class="w-1/2 h-64 object-cover rounded-lg mb-6">
+            <!-- Text Section -->
+            <div class="text-center">
+                
+                <p class="text-md text-gray-400 mb-6">
+                    Бірақ, өкінішке орай, ол желмен өз жеріне кеттіп, бізді бұл
+                    сыйқырдан қалдырды. Ал біз бұл қосымшаны қайтадан іске қостық! Сондай-ақ бұл жолы үлкен ағамыз
+                    сияқты сыйқырды қайтадан жоғалытпаймыз деген үміттемін! :)
+                    </p>
+                <a href="#"
+                    class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-400 transition-colors">Қосымшаны қолдану</a>
+                <p class="text-sm text-gray-400 mt-4">
+                    Бізге қосғыңыз келеді, немесе бізге сұрақ бар? <a href="https://github.com/arcbomi/fizmat-app" class="text-blue-300 hover:underline">Осы жерді бас</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
+        <div class="container mx-auto">
+            <p>&copy;2024 НАО РФМШ Fizmat-Arcbomi</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

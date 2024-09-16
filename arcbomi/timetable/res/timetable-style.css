@@ -1,0 +1,116 @@
+
+html, body {
+    font-family: Sans-serif;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url('../../../git/arcbomi.github.io/res/png/fizmat-background.png');
+    
+  }
+  
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+
+  .swiper-slide {
+    text-align: center;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+
+  caption {
+    color: black;
+    font-size: 22px;
+    
+  }
+ 
+  .time{
+    text-align: right;
+    
+  }
+
+  table {
+    font-size: 12px;
+    color: #fff;
+    background-color: #002955;
+    border-radius: 11px;
+    padding: 6px 15px;
+    font-weight: bold;
+    font-family: Sans-serif;
+    
+  }
+
+.grades {
+    position: absolute;
+    bottom: 10px;
+}
+
+.grades ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.grades li {
+    z-index: 999;
+    margin-right: 20px;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #002955;
+  padding: 10px;
+  border-radius: 9px;
+  z-index: 1000;
+}
+
+.menu-item {
+  font-weight: bolder;
+  color:rgba(250, 0, 0, 0.912);
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item:hover {
+  background-color: #002c55e7;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  padding-left: 15px;
+}
+
+.submenu-item {
+  color:#fff;
+  margin-left:-15px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submenu-item:hover {
+  background-color: #002355f0;
+}
+
+
+
+
+ 
+  

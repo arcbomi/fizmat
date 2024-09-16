@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickers</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-300">
+
+  <!-- Header -->
+  <a href="../index.html" class="block bg-gray-800 py-6 text-center animate-bounceIn cursor-pointer">
+    <h1 class="text-3xl md:text-4xl font-bold text-blue-400">Скитерлер</h1>
+</a>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Support Us Message -->
+        <section class="text-center mb-8 px-4">
+            <p class="text-lg md:text-xl text-gray-400 mx-auto max-w-3xl bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg">
+                Біздің стикерлерді сатып алу арқылы бізге қолдау көрсетіңіз! Кез келген стикерді басу арқылы жүктей аласыз. Қолдауыңызға рахмет!
+            </p>
+        </section>
+
+        <!-- Stickers Carousel (Mobile) -->
+        <section class="block md:hidden mb-8">
+            <div id="sticker-carousel" class="carousel flex overflow-x-auto space-x-4 py-4"></div>
+        </section>
+
+        <!-- Stickers Grid (Desktop) -->
+        <section
+            class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 px-4 md:px-8 lg:px-12 mb-12"
+            id="sticker-grid">
+        </section>
+
+        <!-- Buy Stickers Button -->
+        <section class="text-center mt-12 px-4">
+            <a href="mailto:arcbomi@gmail.com?subject=%5Bfizmat-stickers%5DSticker%20Inquiry&body=Hello,%0AI%20am%20interested%20in%20the%20following%20stickers:%0A(delete%20what%20you%20don't%20want)%0A1.%20Sticker%201%0A2.%20Sticker%202%0A3.%20Sticker%203%0A4.%20Sticker%204%0A5.%20Sticker%205%0A6.%20Sticker_Ulas%0A%0AThank%20you!" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-400 transition-colors">
+                Сатып алу
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
+        <div class="container mx-auto">
+            <p>&copy;2024 НАО РФМШ Fizmat-Arcbomi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Stickers data
+        const stickers = [
+            { id: 1, img: '1.png', downloadName: 'Sticker1.png' },
+            { id: 2, img: '2.png', downloadName: 'Sticker2.png' },
+            { id: 3, img: '3.png', downloadName: 'Sticker3.png' },
+            { id: 4, img: '4.png', downloadName: 'Sticker4.png' },
+            { id: 5, img: '5.png', downloadName: 'Sticker5.png' },
+            { id: 6, img: '6.png', downloadName: 'Sticker_Ulas.png' }
+        ];
+
+        // Function to generate carousel sticker HTML
+        function createCarouselStickerTemplate(sticker) {
+            return `
+                <a href="${sticker.img}" download="${sticker.downloadName}"
+                   class="flex-none w-56 h-56 bg-gray-700 rounded-lg overflow-hidden">
+                    <img src="${sticker.img}" alt="Sticker ${sticker.id}"
+                         class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                </a>`;
+        }
+
+        // Function to generate grid sticker HTML
+        function createGridStickerTemplate(sticker) {
+            return `
+                <a href="${sticker.img}" download="${sticker.downloadName}"
+                   class="bg-gray-800 p-4 rounded-lg shadow-lg flex items-center justify-center">
+                    <img src="${sticker.img}" alt="Sticker ${sticker.id}"
+                         class="w-full h-64 object-cover rounded-lg transition-transform duration-300 hover:scale-110">
+                </a>`;
+        }
+
+        // Populate sticker carousel for mobile
+        const carouselContainer = document.getElementById('sticker-carousel');
+        stickers.forEach(sticker => {
+            carouselContainer.innerHTML += createCarouselStickerTemplate(sticker);
+        });
+
+        // Populate sticker grid for desktop
+        const gridContainer = document.getElementById('sticker-grid');
+        stickers.forEach(sticker => {
+            gridContainer.innerHTML += createGridStickerTemplate(sticker);
+        });
+    </script>
+</body>
+
+</html>

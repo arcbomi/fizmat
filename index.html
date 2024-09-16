@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizmat-Arcbomi Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Navbar -->
+    <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4 py-2">
+            <a id="navbar-brand"
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="#">
+                <!-- fizmat Logo -->
+                <img src="fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
+                <span>Fizmat Arcbomi</span>
+            </a>
+
+            <!-- Full Menu for Desktop -->
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
+                <!-- JavaScript will populate this section -->
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <div class="dropdown lg:hidden ml-auto">
+                <label tabindex="0" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
+                    <!-- JavaScript will populate this section -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="h-[80vh] lg:h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="h-64 w-64 rounded-full bg-blue-500 opacity-20 blur-3xl animate-ping absolute bottom-10 left-10">
+            </div>
+            <div class="h-48 w-48 rounded-full bg-blue-600 opacity-25 blur-2xl animate-ping absolute top-20 right-20">
+            </div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-blue-900 to-gray-900 opacity-60"></div>
+        <div class="relative text-center fade-in-up">
+            <h1 class="text-6xl font-extrabold text-blue-400 mb-4 animate-pulse">Қош келдіңіз</h1>
+            <p class="text-2xl text-gray-300 mb-8 animate-fadeIn">Осышы осы жерге не жазамын деп көп ойландым, әлі білмеймін <br> (сенде қайдайда бір идея бар болса маған жаз)
+            </p>
+            <div id="hero-buttons" class="flex flex-wrap justify-center gap-6">
+                <!-- JavaScript will populate this section -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto text-center fade-in-up">
+            <h2 class="text-4xl font-bold text-blue-300 mb-10">Іздегеніңіз бар болар?</h2>
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JavaScript will populate this section -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
+        <div class="container mx-auto">
+            <p>&copy;2024 НАО РФМШ Fizmat-Arcbomi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data for Navbar and Cards
+
+        /*
+        Стикер
+        Апп
+        Arcbomi команда
+        Youtube edu 
+        Формула
+        Ақша бер
+        Документ
+        */
+        const navbarItems = [
+            { href: './stickers', text: 'Стикер' },
+            { href: './app', text: 'Апп' },
+            { href: './arcbomi', text: 'Arcbomi команда' },
+            { href: './youtube-edu', text: 'Youtube edu' },
+            { href: '/fizmat-formula-book', text: 'Формула' },
+            { href: './donate', text: 'Donate' },
+            { href: './document/zh-cn', text: 'Документ' },
+        ];
+
+        const heroButtons = [
+            { href: './stickers', text: 'Asemay Стикер', class: 'btn-primary' },
+            { href: './app', text: 'Fizmat Апп', class: 'btn-secondary' },
+            { href: './arcbomi', text: 'Arcbomi команда', class: 'btn-accent' },
+        ];
+
+        const cardItems = [
+            { href: './stickers', title: 'Стикер', description: 'Бізді қолдағыңыз келе ме? Қарап көр.', class: 'btn-primary' },
+            { href: './app', title: 'Fizmat Апп', description: 'Мектеп арасындағы қосымша, Kundelik GPA есептегіш.', class: 'btn-secondary' },
+            { href: './arcbomi', title: 'Arcbomi команда', description: 'Сайтты құрушы команда.', class: 'btn-accent' },
+            { href: './youtube-edu', title: 'Youtube edu', description: 'Формула жинағына арналған түсіндірмелер.', class: 'btn-info' },
+            { href: './formula-book', title: 'Формула', description: 'Формула жинағы.', class: 'btn-warning' },
+            { href: './donate', title: 'Ақша бер', description: 'Қалтаңда не бар соны бер, Kaspi Halyk бәрі жарымды.', class: 'btn-error' },
+        ];
+
+        // Populate Navbar
+        const navbarMenu = document.getElementById('navbar-menu');
+        const navbarDropdown = document.querySelector('.dropdown-content');
+
+        navbarItems.forEach(item => {
+            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
+            navbarMenu.insertAdjacentHTML('beforeend', link);
+            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
+            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+        });
+
+        // Populate Hero Buttons
+        const heroButtonsContainer = document.getElementById('hero-buttons');
+        heroButtons.forEach(button => {
+            const btn = `<a href="${button.href}" class="btn btn-outline ${button.class} w-48 text-center hover:bg-blue-600 hover:text-white transition-colors">${button.text}</a>`;
+            heroButtonsContainer.insertAdjacentHTML('beforeend', btn);
+        });
+
+
+        // Populate Cards
+        const cardContainer = document.getElementById('card-container');
+        cardItems.forEach(card => {
+            const cardElement = `
+                <div class="card bg-gray-900 hover:bg-gray-800 transform hover:scale-105 transition-transform shadow-md mx-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-blue-400">${card.title}</h3>
+                        <p class="text-gray-400">${card.description}</p>
+                        <a href="${card.href}" class="btn ${card.class} w-full">Көбірек білу</a>
+                    </div>
+                </div>`;
+            cardContainer.insertAdjacentHTML('beforeend', cardElement);
+        });
+    </script>
+</body>
+ 
+</html>
