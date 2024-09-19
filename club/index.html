@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizmat-Arcbomi Clubs</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        img {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card:hover h3 {
+            text-shadow: 0 0 8px rgba(0, 150, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Clubs Section -->
+    <section class="py-16 bg-gray-900">
+        <h2 class="text-4xl font-bold text-blue-300 mb-10 text-center m-5 lg:text-6xl">Fizmat Clubs</h2>
+        <div class="container mx-auto text-center mx-1">
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="club-cards">
+                <!-- Dynamic cards will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
+        <div class="container mx-auto">
+            <p>&copy;2024 НАО РФМШ Fizmat-Arcbomi</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // 使用 fetch API 读取当前目录下的 club_list.json 文件
+        fetch('./club_list.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // 将文件内容解析为 JSON
+            })
+            .then(clubs => {
+                // 读取到 clubs 数组后，您可以在这里操作该数组
+                //console.log(clubs);
+
+                // Inject the cards into the HTML
+                const cardsContainer = document.getElementById('club-cards');
+                clubs.forEach(club => {
+                    cardsContainer.innerHTML += generateCard(club);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching club_list:', error);
+                alert('ERROR fizmat club: ' + error.message); // 弹出错误提示
+            });
+
+        // Function to generate card HTML template
+        function generateCard({ name, description, imageUrl, link }) {
+            return `
+        <a href="${link}" class="block card bg-gray-800 shadow-lg hover:shadow-xl h-auto">
+            <div class="card-body p-4 flex flex-row items-center lg:flex-col lg:items-stretch lg:max-w-xs mx-auto h-auto">
+                <figure class="w-32 h-32 lg:w-full lg:h-auto rounded-lg overflow-hidden">
+                    <img src="${imageUrl}" alt="${name}" class="object-cover w-full h-full">
+                </figure>
+                <div class="ml-4 lg:ml-0 text-left lg:text-center mt-0 lg:mt-2">
+                    <h3 class="text-xl font-bold text-blue-400">${name}</h3>
+                    <p class="text-gray-400 text-sm break-words">${description}</p>
+                </div>
+            </div>
+        </a>
+    `;
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
