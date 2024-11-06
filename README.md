@@ -1,4 +1,4 @@
-# Fizmat 🌐
+# Fizmat
 
 Welcome to [Fizmat](https://github.com/arcbomi/fizmat)! 🎉
 
@@ -39,5 +39,3 @@ If you have any questions, suggestions, or just want to chat, reach out to us:
 
 - **GitHub Issues**: [Create an Issue](https://github.com/arcbomi/fizmat/issues)
 - **Email**: [Contact us via email](mailto:arcbomi@gmail.com)
-
-Thanks for checking out Fizmat! 🌟 Your support means a lot!

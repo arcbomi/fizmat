@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com/3.4.5"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-  
+
 </head>
+
 <body class="bg-gray-900 text-white">
     <!-- Navbar -->
     <div class="navbar bg-gray-800 p-4">
@@ -20,7 +22,8 @@
     <!-- Search and Grade Selection -->
     <div class="flex justify-between items-center p-4">
         <!-- Search box -->
-        <input type="text" id="searchBox" placeholder="Search by book name" class="input input-bordered w-full max-w-xs text-black mr-2">
+        <input type="text" id="searchBox" placeholder="Search by book name"
+            class="input input-bordered w-full max-w-xs text-black mr-2">
         <!-- Grade selection -->
         <select id="gradeSelect" class="select select-bordered text-black md:w-32">
         </select>
@@ -39,21 +42,21 @@
                 const bookContainer = document.getElementById('bookContainer');
                 const gradeSelect = document.getElementById('gradeSelect');
                 const searchBox = document.getElementById('searchBox');
-    
+
                 // Extract unique grades (group) from books
                 const grades = [...new Set(books.map(book => book.group))];
-    
+
                 // Populate gradeSelect options dynamically (no "all grade")
                 grades.forEach(grade => {
                     const option = document.createElement('option');
                     option.value = grade;
-                    option.textContent = `${grade}th`;
+                    option.textContent = `${grade}`;
                     gradeSelect.appendChild(option);
                 });
-    
+
                 // Set initial value to 7th grade
-                gradeSelect.value = '7'; // Adjust this value based on your actual grade representation
-    
+                gradeSelect.value = 'algebra'; // Adjust this value based on your actual grade representation
+
                 // Function to display books
                 function displayBooks(filteredBooks) {
                     bookContainer.innerHTML = ''; // Clear previous results
@@ -62,7 +65,9 @@
                         <div class="card book-card bg-gray-800 shadow-xl flex flex-col">
                             <figure class="relative flex-grow">
                                 <a href="${book.download_page}" target="_blank">
-                                    <img src="${book.image}" alt="${book.name}" class="w-full h-full object-cover">
+                                    <div class="bg-white w-full h-56 flex items-center justify-center overflow-hidden">
+                                         <img src="${book.image}" alt="${book.name}" class="w-full h-full object-cover">
+                                    </div>
                                 </a>
                                 <a href="${book.preview_page}" target="_blank" class="absolute top-2 left-2 bg-gray-900 text-white p-2 rounded-full">
                                     <i class="fa fa-eye"></i>
@@ -75,25 +80,25 @@
                         bookContainer.innerHTML += bookCard;
                     });
                 }
-    
+
                 // Initial load - show books for 7th grade
-                const initialFilteredBooks = books.filter(book => book.group == '7'); // Adjust to your actual grade representation
+                const initialFilteredBooks = books.filter(book => book.group == 'algebra'); // Adjust to your actual grade representation
                 displayBooks(initialFilteredBooks);
-    
+
                 // Function to filter books based on both search and grade selection
                 function filterBooks() {
                     const selectedGrade = gradeSelect.value;
                     const searchTerm = searchBox.value.toLowerCase();
-    
+
                     const filteredBooks = books.filter(book => {
                         const matchesGrade = book.group == selectedGrade; // No need for empty check
                         const matchesSearch = book.name.toLowerCase().includes(searchTerm);
                         return matchesGrade && matchesSearch;
                     });
-    
+
                     displayBooks(filteredBooks);
                 }
-    
+
                 // Event listeners for search and grade filter
                 gradeSelect.addEventListener('change', filterBooks);
                 searchBox.addEventListener('input', filterBooks);
@@ -103,6 +108,7 @@
                 alert('ERROR Fizmat Book: ' + error.message); // Show error alert
             });
     </script>
-    
+
 </body>
+
 </html>

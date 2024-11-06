@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fizmat-Arcbomi Home</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.5"></script>
     <style>
         @keyframes fadeInUp {
             0% {
@@ -112,6 +112,10 @@
             { href: './stickers', text: 'Стикер' },
             { href: './app', text: 'Апп' },
             { href: './arcbomi', text: 'Arcbomi команда' },
+            { href: './arcbomi/timetable', text: 'Timetable' },
+            { href: './arcbomi/book-online', text: 'Book online' },
+            { href: './arcbomi/birthday', text: 'Birthday' },
+            { href: './arcbomi', text: 'Arcbomi команда' },
             { href: './club', text: 'Club' },
             { href: './youtube-edu', text: 'Youtube edu' },
             { href: '/fizmat-formula-book', text: 'Формула' },
@@ -122,7 +126,7 @@
         const heroButtons = [
             { href: './stickers', text: 'Asemay Стикер', class: 'btn-primary' },
             { href: './app', text: 'Fizmat Апп', class: 'btn-secondary' },
-            { href: './club', text: 'Join Club', class: 'btn-accent' },
+            { href: './arcbomi/book-online', text: 'Book', class: 'btn-accent' },
         ];
 
         const cardItems = [
@@ -130,9 +134,10 @@
             { href: './app', title: 'Fizmat Апп', description: 'Мектеп арасындағы қосымша, Kundelik GPA есептегіш.', class: 'btn-secondary' },
             { href: './arcbomi', title: 'Arcbomi команда', description: 'Сайтты құрушы команда.', class: 'btn-accent' },
             { href: './club', title: 'Club', description: 'JOIN Club', class: 'btn-error' },
-            { href: './youtube-edu', title: 'Youtube edu', description: 'Формула жинағына арналған түсіндірмелер.', class: 'btn-info' },
+            { href: './arcbomi/book-online', title: 'Book online', description: 'Book online', class: 'btn-info' },
+            //{ href: './youtube-edu', title: 'Youtube edu', description: 'Формула жинағына арналған түсіндірмелер.', class: 'btn-info' },
             { href: '/fizmat-formula-book', title: 'Формула', description: 'Формула жинағы.', class: 'btn-warning' }
-           // { href: './donate', title: 'Ақша бер', description: 'Қалтаңда не бар соны бер, Kaspi Halyk бәрі жарымды.', class: 'btn-error' },
+            //{ href: './donate', title: 'Ақша бер', description: 'Қалтаңда не бар соны бер, Kaspi Halyk бәрі жарымды.', class: 'btn-error' },
         ];
 
         // Populate Navbar

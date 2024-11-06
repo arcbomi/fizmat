@@ -2,27 +2,102 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZVLV4FXG6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-3ZVLV4FXG6');
-  </script>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Check</title>
-  <link rel="shortcut icon" href="res/png/favicon.ico">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js" integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.js" integrity="sha512-2ypsPur7qcA+2JjmmIJR1c4GWFqTLIe1naXXplraMg0aWyTOyAMpOk+QL+ULpzwrO/GdwA3qB3FhVyyiR8gdhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" type="text/css" href="res/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
+    integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.js"
+    integrity="sha512-2ypsPur7qcA+2JjmmIJR1c4GWFqTLIe1naXXplraMg0aWyTOyAMpOk+QL+ULpzwrO/GdwA3qB3FhVyyiR8gdhw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
+<style>
+  html, body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+}
+
+.birthday-list {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    min-height: 100vh; /* Ensure it takes at least the full viewport height */
+}
+
+
+.birthday-list tr
+{
+    line-height: 1.7;
+}
+
+.birthday-list tr:hover {
+    color: red;
+}
+table{
+    font-size: 20px;
+    color: #fff;
+    background-color: #002955;
+    border-radius: 34px;
+    padding: 6px 15px;
+    font-weight: bold;
+    font-family: Sans-serif;
+    margin: 40px;
+}
+
+caption {
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+    margin: -25px; 
+    margin-top: -20px;
+    margin-bottom: 15px;  
+  }
+
+  .copy {
+    color: #999999;
+    text-align: center;
+    padding: 20px 0;
+    background: #002c55;
+    font-size: 12px;
+    width: 100%;
+    bottom: 0;
+    line-height: 1.2;
+    bottom: 0;
+    position: absolute;
+}
+
+@media (min-width: 500px) {
+    caption {
+        color: black;
+        font-weight: bolder;
+        font-size: 30px;
+      }
+    table{
+        font-size: 30px;
+        padding: 12px 30px;
+        line-height: 1.5;
+    }
+    .copy {
+        font-size: 15px;
+        line-height: 1.5; 
+    }
+    
+}
+
+h1{
+    font-family: Sans-serif;
+}
+
+</style>
+
 <body>
-  
+
 
 
   <script>

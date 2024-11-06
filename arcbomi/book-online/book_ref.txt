@@ -1,1 +1,0 @@
-//{group} {book name} {book image} {book url}
