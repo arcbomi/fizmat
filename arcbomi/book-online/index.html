@@ -55,7 +55,7 @@
                 });
 
                 // Set initial value to 7th grade
-                gradeSelect.value = 'algebra'; // Adjust this value based on your actual grade representation
+                gradeSelect.value = '7'; // Adjust this value based on your actual grade representation
 
                 // Function to display books
                 function displayBooks(filteredBooks) {
@@ -82,7 +82,7 @@
                 }
 
                 // Initial load - show books for 7th grade
-                const initialFilteredBooks = books.filter(book => book.group == 'algebra'); // Adjust to your actual grade representation
+                const initialFilteredBooks = books.filter(book => book.group == '7'); // Adjust to your actual grade representation
                 displayBooks(initialFilteredBooks);
 
                 // Function to filter books based on both search and grade selection
