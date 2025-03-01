@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Birthdays</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                window.location.href = '/arcbomi/birthday';
+            }
+            fetchBirthdays();
+        });
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Archive';
+            src: url('res/Archive-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen relative" style="background: url('res/background.png') no-repeat center center fixed; background-size: cover;">
+    
+    <div id="birthday-container" class="w-[573px] h-auto flex flex-col gap-5 absolute right-10"></div>
+
+ 
+    <script> 
+        function decodeBase64Utf8(base64) {
+            return decodeURIComponent(escape(atob(base64)));
+        }
+
+        let testDate = null; // Variable to store manually set date
+
+        function setDay(dateString) {
+            testDate = dateString; // Override the current date
+            fetchBirthdays(); // Re-fetch data with new date
+        }
+
+        //setDay('06-26')
+
+        function getTodayDate() {
+            if (testDate) return testDate; // Use manually set date if available
+            let today = new Date();
+            let month = (today.getMonth() + 1).toString().padStart(2, '0');
+            let day = today.getDate().toString().padStart(2, '0');
+            return `${month}-${day}`;
+        }
+
+        async function fetchBirthdays() {
+            try {
+                let response = await fetch('data/student-2024-2025.csv');
+                if (!response.ok) throw new Error('Failed to fetch birthday data');
+                let text = await response.text();
+                displayBirthdays(text);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayBirthdays(csvText) {
+            let today = getTodayDate();
+            let rows = csvText.split('\n').slice(1);
+            let container = document.getElementById('birthday-container');
+            container.innerHTML = '';
+
+            let hasBirthday = false;
+
+            rows.forEach(row => {
+                let cols = row.split(',');
+                if (cols.length >= 2 && cols[0] === today) {
+                    hasBirthday = true;
+                    let name = decodeBase64Utf8(cols[1]);
+                    let studentClass = cols[2] ? cols[2] : 'Unknown Class';
+                    let card = `
+                        <div class="h-[74px] flex items-center justify-between bg-white shadow-md border-2 border-[#c90101] px-6">
+                            <span class="text-[#232323] text-4xl font-bold font-['Archive']">${name}</span>
+                            <span class="text-[#232323] text-4xl font-normal font-['Archive']">${studentClass}</span>
+                        </div>`;
+                    container.innerHTML += card;
+                }
+            });
+
+            if (!hasBirthday) {
+                container.innerHTML = `
+                    <div class="h-[74px] flex items-center justify-center bg-white shadow-md border-2 border-[#c90101] px-6">
+                        <span class="text-[#232323] text-4xl font-bold font-['Archive']">No birthdays today</span>
+                    </div>`;
+            }
+        }
+
+
+        
+    </script>
+</body>
+</html>

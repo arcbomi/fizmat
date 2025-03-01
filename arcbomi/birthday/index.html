@@ -5,12 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Check</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
-    integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.js"
-    integrity="sha512-2ypsPur7qcA+2JjmmIJR1c4GWFqTLIe1naXXplraMg0aWyTOyAMpOk+QL+ULpzwrO/GdwA3qB3FhVyyiR8gdhw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <style>
@@ -101,36 +95,53 @@ h1{
 
 
   <script>
-    $(document).ready(function () {
-      $.ajax({
-        type: "GET",
-        url: "all.csv",
-        dataType: "text",
-        success: function (data) {
-          var csvData = $.csv.toArrays(data);
-          var today = new Date();
-          var todayFormatted = ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-          var birthdayPeople = {};
-          for (var i = 0; i < csvData.length; i++) {
-            var name = csvData[i][0];
-            var grade = csvData[i][1];
-            var birthday = csvData[i][2];
-            if (birthday === todayFormatted) {
-              birthdayPeople[name] = grade;
-            }
-          }
-          var htmlString = '<div class="birthday-list"><table> <caption></caption>';
-          for (var person in birthdayPeople) {
-            htmlString += '<tr><td>' + person + '</td><td>' + birthdayPeople[person] + '</td>';
-          }
-          if ($.isEmptyObject(birthdayPeople)) {
-            htmlString += '<li>Бүгін ешкімнің туған күні жоқ</li>';
-          }
-          htmlString += '</table></div>';
-          $('body').prepend(htmlString);
+document.addEventListener("DOMContentLoaded", function () {
+    fetchAndDisplayBirthdays("student.csv");
+});
+
+function fetchAndDisplayBirthdays(csvFile) {
+    fetch(csvFile)
+        .then(response => response.text())
+        .then(data => {
+            let birthdayPeople = getBirthdayPeople(data);
+            displayBirthdayList(birthdayPeople);
+        })
+        .catch(error => console.error("Error loading the CSV file:", error));
+}
+
+function getBirthdayPeople(data) {
+    let rows = data.split("\n").map(row => row.split(","));
+    let today = new Date();
+    let todayFormatted = ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+    let birthdayPeople = {};
+
+    rows.slice(1).forEach(row => { // Skip header row
+        let [birthday, name, studentClass] = row;
+        if (birthday && birthday.trim() === todayFormatted) {
+            birthdayPeople[decodeBase64Utf8(name)] = studentClass;
         }
-      });
     });
+    return birthdayPeople;
+}
+
+function displayBirthdayList(birthdayPeople) {
+    let htmlString = '<div class="birthday-list"><table> <caption></caption>';
+    if (Object.keys(birthdayPeople).length > 0) {
+        for (let person in birthdayPeople) {
+            htmlString += `<tr><td>${person}</td><td>${birthdayPeople[person]}</td></tr>`;
+        }
+    } else {
+        htmlString += '<li>Бүгін ешкімнің туған күні жоқ</li>';
+    }
+    htmlString += '</table></div>';
+    document.body.insertAdjacentHTML("afterbegin", htmlString);
+}
+
+function decodeBase64Utf8(base64) {
+    return decodeURIComponent(escape(atob(base64)));
+}
+
+
   </script>
 </body>
 

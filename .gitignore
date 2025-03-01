@@ -1,0 +1,6 @@
+# Ignore Python virtual environment
+.venv/
+venv/
+
+# Ignore VS Code settings and workspace files
+.vscode/
