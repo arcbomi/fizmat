@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fizmat-Arcbomi Clubs</title>
+    <title>Fizmat-Arcbomi-Quakep Clubs</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com/3.4.5"></script>
 
@@ -31,9 +31,41 @@
 
 <body class="bg-gray-900 text-gray-300">
 
+     <!-- Navbar -->
+<body class="bg-gray-900 text-gray-300">
+    <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4 py-2">
+            <a id="navbar-brand"
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="../../index.html">
+                <!-- fizmat Logo -->
+                <img src="../../fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
+                <span>FizMat by Quakep</span>
+            </a>
+
+            <!-- Full Menu for Desktop -->
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
+                <!-- JavaScript will populate this section -->
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <div class="dropdown lg:hidden ml-auto">
+                <label tabindex="0" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
+                    <!-- JavaScript will populate this section -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Clubs Section -->
     <section class="py-16 bg-gray-900">
-        <h2 class="text-4xl font-bold text-blue-300 mb-10 text-center m-5 lg:text-6xl">Fizmat Clubs</h2>
+        <h2 class="text-4xl font-bold text-blue-300 mb-10 text-center m-5 lg:text-6xl">FizMat Clubs</h2>
         <div class="container mx-auto text-center mx-1">
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="club-cards">
@@ -46,12 +78,51 @@
     <!-- Footer -->
     <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
         <div class="container mx-auto">
-            <p>&copy;2024 НАО РФМШ Fizmat-Arcbomi</p>
+            <p>&copy;2025 НАО РФМШ FizMat-Quakep</p>
         </div>
     </footer>
 
 
     <script>
+
+        // Data for Navbar and Cards
+
+        /*
+        Стикер
+        Апп
+        Arcbomi команда
+        Youtube edu 
+        Формула
+        Ақша бер
+        Документ
+        */
+        const navbarItems = [
+          //  { href: './stickers', text: 'Стикер' },
+          //  { href: './app', text: 'Апп' },
+            // { href: '../arcbomi', text: 'Arcbomi команда' },
+         //   { href: './arcbomi/timetable', text: 'Timetable' },
+          { href: '../arcbomi/book-online', text: 'Онлайн кітап' },
+            { href: '../arcbomi/birthday/show.html', text: 'Туған күн' },
+        //    { href: './arcbomi', text: 'Arcbomi команда' },
+           { href: '../club/index.html', text: 'Клубтар' },
+          //  { href: './youtube-edu', text: 'Youtube edu' },
+            { href: 'https://formula.arcbomi.org/', text: 'Формулалар' },
+          //  { href: './donate', text: 'Donate' },
+           // { href: './document/zh-cn', text: 'Документ' },
+        ];
+
+        // Populate Navbar
+        const navbarMenu = document.getElementById('navbar-menu');
+        const navbarDropdown = document.querySelector('.dropdown-content');
+
+        navbarItems.forEach(item => {
+            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
+            navbarMenu.insertAdjacentHTML('beforeend', link);
+            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
+            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+        });
+
+
         // 使用 fetch API 读取当前目录下的 club_list.json 文件
         fetch('./club_list.json')
             .then(response => {
