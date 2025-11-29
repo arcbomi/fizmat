@@ -84,7 +84,7 @@ function getTodayDate() {
 
 async function fetchBirthdays() {
     try {
-        const response = await fetch('student-2024-2025.csv'); // ваша CSV
+        const response = await fetch('student-2024-2025.csv');
         if(!response.ok) throw new Error('CSV not found');
         const text = await response.text();
         displayBirthdays(text);
