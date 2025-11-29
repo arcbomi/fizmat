@@ -6,14 +6,84 @@
     <title>Today's Birthdays by Quakep</title>
     <script src="browser@4.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (/Mobi|Android/i.test(navigator.userAgent)) {
-            // Редирект один раз только с этой страницы
-            window.location.href = '/arcbomi/birthday/show.html';
-            return; // чтобы fetchBirthdays не выполнялся здесь
-        }
-        fetchBirthdays();
-    });
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                window.location.href = 'birthday/show.html';
+                return;
+            }
+
+            fetchBirthdays();
+
+            let testDate = null;
+            window.setDay = function(dateString) {
+                testDate = dateString;
+                fetchBirthdays();
+            }
+
+            function getTodayDate() {
+                if (testDate) return testDate;
+                let today = new Date();
+                let month = String(today.getMonth() + 1).padStart(2, '0');
+                let day = String(today.getDate()).padStart(2, '0');
+                return `${month}-${day}`;
+            }
+
+            function decodeBase64Utf8(base64) {
+                return decodeURIComponent(escape(atob(base64)));
+            }
+
+            async function fetchBirthdays() {
+                try {
+                    let response = await fetch('./data/student-2024-2025.csv');
+                    if (!response.ok) throw new Error('Не удалось загрузить CSV');
+                    let text = await response.text();
+                    displayBirthdays(text);
+                } catch (err) {
+                    console.error('Ошибка загрузки CSV:', err);
+                }
+            }
+
+            function displayBirthdays(csvText) {
+                let today = getTodayDate();
+                let rows = csvText.split('\n').slice(1);
+                let container = document.getElementById('birthday-container');
+                container.innerHTML = '';
+
+                // Home-кнопка
+                container.innerHTML += `
+                    <a href="./index.html" class="flex items-center gap-4 bg-[#1e2a3b] rounded-xl px-6 h-[74px] shadow-md border border-[#3a4a5b] hover:bg-[#253447] transition-colors">
+                        <img src="./fizmat.svg" alt="Logo" class="h-10 w-10 object-contain"> 
+                        <span class="text-[#5a9bf6] text-4xl font-bold font-['Archive']">Home~Quakep</span>
+                    </a>
+                `;
+
+                let hasBirthday = false;
+                rows.forEach(row => {
+                    let cols = row.split(',');
+                    if (cols.length >= 2 && cols[0] === today) {
+                        hasBirthday = true;
+                        let name = decodeBase64Utf8(cols[1]);
+                        let studentClass = cols[2] || 'Unknown Class';
+                        container.innerHTML += `
+                            <div class="h-[74px] flex items-center justify-between bg-white shadow-md border-2 border-[#c90101] px-6">
+                                <span class="text-[#232323] text-4xl font-bold font-['Archive']">${name}</span>
+                                <span class="text-[#232323] text-4xl font-normal font-['Archive']">${studentClass}</span>
+                            </div>`;
+                    }
+                });
+
+                if (!hasBirthday) {
+                    container.innerHTML += `
+                        <div class="h-[74px] flex items-center justify-center bg-white shadow-md border-2 border-[#c90101] px-6">
+                            <span class="text-[#232323] text-4xl font-bold font-['Archive']">No birthdays today</span>
+                        </div>`;
+                }
+            }
+
+        });
     </script>
     <style>
         @font-face {
