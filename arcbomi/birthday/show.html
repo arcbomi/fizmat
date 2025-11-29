@@ -6,12 +6,14 @@
     <title>Today's Birthdays by Quakep</title>
     <script src="browser@4.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (/Mobi|Android/i.test(navigator.userAgent)) {
-                window.location.href = '/arcbomi/birthday/show.html';
-            }
-            fetchBirthdays();
-        });
+    document.addEventListener("DOMContentLoaded", () => {
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            // Редирект один раз только с этой страницы
+            window.location.href = '/arcbomi/birthday/show.html';
+            return; // чтобы fetchBirthdays не выполнялся здесь
+        }
+        fetchBirthdays();
+    });
     </script>
     <style>
         @font-face {
