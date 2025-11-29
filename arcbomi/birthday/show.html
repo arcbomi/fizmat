@@ -11,7 +11,7 @@
             const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
             if (isMobile) {
-                window.location.href = 'birthday/show.html';
+                window.location.href = 'arcbomi/birthday/show.html';
                 return;
             }
 
@@ -52,7 +52,6 @@
                 let container = document.getElementById('birthday-container');
                 container.innerHTML = '';
 
-                // Home-кнопка
                 container.innerHTML += `
                     <a href="./index.html" class="flex items-center gap-4 bg-[#1e2a3b] rounded-xl px-6 h-[74px] shadow-md border border-[#3a4a5b] hover:bg-[#253447] transition-colors">
                         <img src="./fizmat.svg" alt="Logo" class="h-10 w-10 object-contain"> 
@@ -164,7 +163,6 @@
         });
 
         if (!hasBirthday) {
-            // Если нет дней рождения, можно не трогать Home или добавить отдельную карточку
             container.innerHTML += `
                 <div class="h-[74px] flex items-center justify-center bg-white shadow-md border-2 border-[#c90101] px-6">
                     <span class="text-[#232323] text-4xl font-bold font-['Archive']">No birthdays today</span>
