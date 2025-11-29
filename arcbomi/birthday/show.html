@@ -6,13 +6,17 @@
     <title>Today's Birthdays by Quakep</title>
     <script src="browser@4.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (/Mobi|Android/i.test(navigator.userAgent)) {
-            window.location.href = '/fizmat/arcbomi/birthday/show.html';
-            return;
-        }
-        fetchBirthdays();
-    });
+        document.addEventListener("DOMContentLoaded", () => {
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+            const targetUrl = '/fizmat/arcbomi/birthday/show.html';
+
+            if (isMobile && window.location.pathname !== targetUrl) {
+                window.location.href = targetUrl;
+                return;
+            }
+
+            fetchBirthdays();
+        });
     </script>
     <style>
         @font-face {
