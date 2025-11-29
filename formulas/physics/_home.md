@@ -1,0 +1,2 @@
+- [Басты бетке қайту](/?id=main)
+- [physics](physics/)

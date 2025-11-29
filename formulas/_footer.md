@@ -1,0 +1,1 @@
+2025 НАО РФМШ FizMat-Quakep & [Docsify](https://docsify.js.org) платформасы арқылы мақтанышпен жарияланған.

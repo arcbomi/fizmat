@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Introduction</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @media (max-width: 640px) {
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Cool Animation */
+        .btn-animated {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-animated:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-900 text-center text-gray-300">
+
+    <!-- Navbar -->
+    <nav class="navbar bg-gray-800 shadow-lg fixed top-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center px-4 py-2">
+            <a id="navbar-brand"
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="/fizmat/index.html">
+                <img src="/fizmat/fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
+                <span>FizMat by Quakep</span>
+            </a>
+
+            <!-- Full Menu for Desktop -->
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
+                <!-- JavaScript will populate this section -->
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <div class="dropdown lg:hidden ml-auto">
+                <label tabindex="0" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
+                    <!-- JavaScript will populate this section -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center flex-1 pt-24"> <!-- pt-24 чтобы контент не был под navbar -->
+        <h1 class="text-4xl font-bold mb-8 text-blue-400 fade-in">Hi, I am Quakep, nice to meet you!</h1>
+
+        <div class="flex flex-col gap-4 items-center">
+            <a href="/fizmat/donate" class="btn btn-outline btn-animated bg-orange-500 text-white hover:bg-orange-400 w-48 py-3 rounded-lg">Want to donate?</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-gray-800 text-gray-400 text-center mt-auto">
+        <div class="container mx-auto">
+            <p>&copy;2025 НАО РФМШ FizMat-Quakep</p>
+        </div>
+    </footer>
+    <script>
+        // Data for Navbar and Cards
+
+        /*
+        Стикер
+        Апп
+        Arcbomi команда
+        Youtube edu 
+        Формула
+        Ақша бер
+        Документ
+        */
+        const navbarItems = [
+          //  { href: './stickers', text: 'Стикер' },
+          //  { href: './app', text: 'Апп' },
+            // { href: './arcbomi', text: 'Arcbomi команда' },
+         //   { href: './arcbomi/timetable', text: 'Timetable' },
+           { href: '/fizmat/quakep', text: 'Quakep' },
+          { href: '../arcbomi/book-online', text: 'Онлайн кітап' },
+            { href: '../arcbomi/birthday/show.html', text: 'Туған күн'},
+           { href: '../club/index.html', text: 'Клубтар' },
+          //  { href: './youtube-edu', text: 'Youtube edu' },
+            { href: '../formulas/index.html', text: 'Формулалар' },
+          //  { href: './donate', text: 'Donate' },
+           // { href: './document/zh-cn', text: 'Документ' },
+        ];
+
+        // Populate Navbar
+        const navbarMenu = document.getElementById('navbar-menu');
+        const navbarDropdown = document.querySelector('.dropdown-content');
+
+        navbarItems.forEach(item => {
+            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
+            navbarMenu.insertAdjacentHTML('beforeend', link);
+            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
+            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+        });
+    </script>
+</body>
+</html>
