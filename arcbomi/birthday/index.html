@@ -71,57 +71,52 @@ td {
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetchAndDisplayBirthdays("data/student-2024-2025.csv");
+});
+
+function fetchAndDisplayBirthdays(csvFile) {
+    fetch(csvFile)
+        .then(response => response.text())
+        .then(data => {
+            let birthdayPeople = getBirthdayPeople(data);
+            displayBirthdayList(birthdayPeople);
+        })
+        .catch(error => console.error("Error loading the CSV file:", error));
+}
+
+function getBirthdayPeople(data) {
+    let rows = data.split("\n").map(row => row.split(","));
+    let today = new Date();
+    let todayFormatted = ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+    let birthdayPeople = {};
+
+    rows.slice(1).forEach(row => { // Skip header
+        let [birthday, name, studentClass] = row;
+        if (birthday && birthday.trim() === todayFormatted) {
+            birthdayPeople[decodeBase64Utf8(name)] = studentClass;
+        }
+    });
+    return birthdayPeople;
+}
+
+function displayBirthdayList(birthdayPeople) {
+    let htmlString = '<div class="birthday-list"><table> <caption>Бүгін туған күн</caption>';
+    if (Object.keys(birthdayPeople).length > 0) {
+        for (let person in birthdayPeople) {
+            htmlString += `<tr><td>${person}</td><td>${birthdayPeople[person]}</td></tr>`;
+        }
+    } else {
+        htmlString += '<tr><td colspan="2">Бүгін ешкімнің туған күні жоқ</td></tr>';
+    }
+    htmlString += '</table></div>';
+    document.body.insertAdjacentHTML("afterbegin", htmlString);
+}
+
 function decodeBase64Utf8(base64) {
     return decodeURIComponent(escape(atob(base64)));
 }
-
-function getTodayDate() {
-    let today = new Date();
-    let month = (today.getMonth() + 1).toString().padStart(2,'0');
-    let day = today.getDate().toString().padStart(2,'0');
-    return `${month}-${day}`;
-}
-
-async function fetchBirthdays() {
-    try {
-        const response = await fetch('student-2024-2025.csv');
-        if(!response.ok) throw new Error('CSV not found');
-        const text = await response.text();
-        displayBirthdays(text);
-    } catch(e) {
-        console.error(e);
-    }
-}
-
-function displayBirthdays(csvText) {
-    const today = getTodayDate();
-    const rows = csvText.split('\n').slice(1);
-    const container = document.getElementById('birthday-container');
-
-    let birthdayPeople = {};
-    rows.forEach(row => {
-        const cols = row.split(',');
-        if(cols.length >= 2 && cols[0] === today) {
-            const name = decodeBase64Utf8(cols[1]);
-            const cls = cols[2] ? cols[2] : 'Unknown Class';
-            birthdayPeople[name] = cls;
-        }
-    });
-
-    let html = '<table><caption>Бүгінгі туған күндер</caption>';
-    if(Object.keys(birthdayPeople).length > 0) {
-        for(let name in birthdayPeople) {
-            html += `<tr><td>${name}</td><td>${birthdayPeople[name]}</td></tr>`;
-        }
-    } else {
-        html += `<tr><td colspan="2">Бүгін ешкімнің туған күні жоқ</td></tr>`;
-    }
-    html += '</table>';
-    container.insertAdjacentHTML('beforeend', html);
-    container.insertAdjacentHTML('beforeend', `<div class="copy">&copy;2025 FizMat-Quakep</div>`);
-}
-
-document.addEventListener("DOMContentLoaded", fetchBirthdays);
 </script>
+
 </body>
 </html>
