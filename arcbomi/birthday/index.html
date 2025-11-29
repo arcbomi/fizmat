@@ -1,148 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Check</title>
-</head>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Check - Mobile</title>
 <style>
-  html, body {
-    position: relative;
-    height: 100%;
+body {
     margin: 0;
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.2em;
-}
-
-.birthday-list {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    min-height: 100vh; /* Ensure it takes at least the full viewport height */
-}
-
-
-.birthday-list tr
-{
-    line-height: 1.7;
-}
-
-.birthday-list tr:hover {
-    color: red;
-}
-table{
-    font-size: 20px;
-    color: #fff;
     background-color: #002955;
-    border-radius: 34px;
-    padding: 6px 15px;
+    color: #fff;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+a.home-link {
+    display: block;
+    margin-bottom: 20px;
+    color: #5a9bf6;
     font-weight: bold;
-    font-family: Sans-serif;
-    margin: 40px;
+    font-size: 1.5em;
+    text-decoration: none;
 }
-
-caption {
-    color: black;
-    font-weight: bolder;
-    font-size: 20px;
-    margin: -25px; 
-    margin-top: -20px;
-    margin-bottom: 15px;  
-  }
-
-  .copy {
-    color: #999999;
-    text-align: center;
-    padding: 20px 0;
-    background: #002c55;
-    font-size: 12px;
+a.home-link:hover {
+    text-decoration: underline;
+}
+table {
     width: 100%;
-    bottom: 0;
-    line-height: 1.2;
-    bottom: 0;
-    position: absolute;
+    max-width: 400px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: #004080;
+    border-radius: 15px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
 }
-
+caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+tr:hover {
+    color: #ff6666;
+}
+td {
+    padding: 8px 12px;
+}
+.copy {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
 @media (min-width: 500px) {
-    caption {
-        color: black;
-        font-weight: bolder;
-        font-size: 30px;
-      }
-    table{
-        font-size: 30px;
-        padding: 12px 30px;
-        line-height: 1.5;
-    }
-    .copy {
-        font-size: 15px;
-        line-height: 1.5; 
-    }
-    
+    table { font-size: 20px; padding: 12px; }
+    caption { font-size: 2em; }
+    .copy { font-size: 14px; }
 }
-
-h1{
-    font-family: Sans-serif;
-}
-
 </style>
-
+</head>
 <body>
+<div class="container" id="birthday-container">
+    <a href="/fizmat/index.html" class="home-link">Home ~ Quakep</a>
+</div>
 
-
-
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-    fetchAndDisplayBirthdays("student.csv");
-});
-
-function fetchAndDisplayBirthdays(csvFile) {
-    fetch(csvFile)
-        .then(response => response.text())
-        .then(data => {
-            let birthdayPeople = getBirthdayPeople(data);
-            displayBirthdayList(birthdayPeople);
-        })
-        .catch(error => console.error("Error loading the CSV file:", error));
-}
-
-function getBirthdayPeople(data) {
-    let rows = data.split("\n").map(row => row.split(","));
-    let today = new Date();
-    let todayFormatted = ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-    let birthdayPeople = {};
-
-    rows.slice(1).forEach(row => { // Skip header row
-        let [birthday, name, studentClass] = row;
-        if (birthday && birthday.trim() === todayFormatted) {
-            birthdayPeople[decodeBase64Utf8(name)] = studentClass;
-        }
-    });
-    return birthdayPeople;
-}
-
-function displayBirthdayList(birthdayPeople) {
-    let htmlString = '<div class="birthday-list"><table> <caption></caption>';
-    if (Object.keys(birthdayPeople).length > 0) {
-        for (let person in birthdayPeople) {
-            htmlString += `<tr><td>${person}</td><td>${birthdayPeople[person]}</td></tr>`;
-        }
-    } else {
-        htmlString += '<li>Бүгін ешкімнің туған күні жоқ</li>';
-    }
-    htmlString += '</table></div>';
-    document.body.insertAdjacentHTML("afterbegin", htmlString);
-}
-
+<script>
 function decodeBase64Utf8(base64) {
     return decodeURIComponent(escape(atob(base64)));
 }
 
+function getTodayDate() {
+    let today = new Date();
+    let month = (today.getMonth() + 1).toString().padStart(2,'0');
+    let day = today.getDate().toString().padStart(2,'0');
+    return `${month}-${day}`;
+}
 
-  </script>
+async function fetchBirthdays() {
+    try {
+        const response = await fetch('student-2024-2025.csv'); // ваша CSV
+        if(!response.ok) throw new Error('CSV not found');
+        const text = await response.text();
+        displayBirthdays(text);
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+function displayBirthdays(csvText) {
+    const today = getTodayDate();
+    const rows = csvText.split('\n').slice(1);
+    const container = document.getElementById('birthday-container');
+
+    let birthdayPeople = {};
+    rows.forEach(row => {
+        const cols = row.split(',');
+        if(cols.length >= 2 && cols[0] === today) {
+            const name = decodeBase64Utf8(cols[1]);
+            const cls = cols[2] ? cols[2] : 'Unknown Class';
+            birthdayPeople[name] = cls;
+        }
+    });
+
+    let html = '<table><caption>Бүгінгі туған күндер</caption>';
+    if(Object.keys(birthdayPeople).length > 0) {
+        for(let name in birthdayPeople) {
+            html += `<tr><td>${name}</td><td>${birthdayPeople[name]}</td></tr>`;
+        }
+    } else {
+        html += `<tr><td colspan="2">Бүгін ешкімнің туған күні жоқ</td></tr>`;
+    }
+    html += '</table>';
+    container.insertAdjacentHTML('beforeend', html);
+    container.insertAdjacentHTML('beforeend', `<div class="copy">&copy;2025 FizMat-Quakep</div>`);
+}
+
+document.addEventListener("DOMContentLoaded", fetchBirthdays);
+</script>
 </body>
-
 </html>
