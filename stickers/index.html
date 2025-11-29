@@ -31,11 +31,12 @@
     <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4 py-2">
             <a id="navbar-brand"
-                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="/fizmat/index.html">
-                <!-- fizmat Logo -->
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2"
+                href="../fizmat/index.html">
                 <img src="../fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
                 <span>FizMat by Quakep</span>
             </a>
+
 
             <!-- Full Menu for Desktop -->
             <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
@@ -103,19 +104,13 @@
     <script>
 
         const navbarItems = [
-          //  { href: './stickers', text: 'Стикер' },
-          //  { href: './app', text: 'Апп' },
-            // { href: './arcbomi', text: 'Arcbomi команда' },
-         //   { href: './arcbomi/timetable', text: 'Timetable' },
-           { href: '../../quakep', text: 'Quakep' },
-          { href: '../../arcbomi/book-online', text: 'Онлайн кітап' },
-            { href: '../../arcbomi/birthday/show.html', text: 'Туған күн' },
-           { href: '../club/index.html', text: 'Клубтар' },
-          //  { href: './youtube-edu', text: 'Youtube edu' },
-            { href: '../../formulas', text: 'Формулалар' },
-          //  { href: './donate', text: 'Donate' },
-           // { href: './document/zh-cn', text: 'Документ' },
+            { href: '../quakep/index.html', text: 'Quakep' },
+            { href: '../arcbomi/book-online/index.html', text: 'Онлайн кітап' },
+            { href: '../arcbomi/birthday/show.html', text: 'Туған күн' },
+            { href: './index.html', text: 'Клубтар' }, // если клуб в той же папке
+            { href: '../formulas/index.html', text: 'Формулалар' },
         ];
+
 
         // Populate Navbar
         const navbarMenu = document.getElementById('navbar-menu');
