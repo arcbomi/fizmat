@@ -8,26 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com/3.4.5"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body class="bg-gray-900 text-white">
+
     <!-- Navbar -->
     <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4 py-2">
             <a id="navbar-brand"
-                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="../../index.html">
-                <!-- fizmat Logo -->
-                <img src="../../fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="/fizmat/index.html">
+                <img src="/fizmat/fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
                 <span>FizMat by Quakep</span>
             </a>
 
-            <!-- Full Menu for Desktop -->
-            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
-                <!-- JavaScript will populate this section -->
-            </div>
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto"></div>
 
-            <!-- Hamburger Icon for Mobile -->
             <div class="dropdown lg:hidden ml-auto">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -36,39 +31,22 @@
                             d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </label>
-                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
-                    <!-- JavaScript will populate this section -->
-                </ul>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0"></ul>
             </div>
         </div>
     </nav>
 
     <!-- Books Section -->
     <section class="py-16 bg-gray-900">
-        <h2 class="text-4xl font-bold text-blue-300 mb-1 text-center m-1 lg:text-6xl">FizMat Books</h2>
-        <div class="container mx-auto text-center mx-1">
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="club-cards">
-                <!-- Dynamic cards will be inserted here -->
-            </div>
+        <h2 class="text-4xl font-bold text-blue-300 mb-8 text-center lg:text-6xl">FizMat Books</h2>
+        <div class="flex justify-center items-center gap-4 flex-wrap mb-6">
+            <input type="text" id="searchBox" placeholder="Search by book name"
+                class="input input-bordered w-full max-w-xs text-black">
+            <select id="gradeSelect" class="select select-bordered text-black md:w-32"></select>
         </div>
+
+        <div id="bookContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 px-4"></div>
     </section>
-
-
-    <!-- Search and Grade Selection -->
-    <div class="flex justify-between items-center p-4">
-        <!-- Search box -->
-        <input type="text" id="searchBox" placeholder="Search by book name"
-            class="input input-bordered w-full max-w-xs text-black mr-2">
-        <!-- Grade selection -->
-        <select id="gradeSelect" class="select select-bordered text-black md:w-32">
-        </select>
-    </div>
-
-    <!-- Book Display Section -->
-    <div id="bookContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-4">
-        <!-- JavaScript will inject book cards here -->
-    </div>
 
     <!-- Footer -->
     <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
@@ -79,105 +57,85 @@
 
     <script>
         const navbarItems = [
-          //  { href: './stickers', text: 'Стикер' },
-          //  { href: './app', text: 'Апп' },
-            // { href: './arcbomi', text: 'Arcbomi команда' },
-         //   { href: './arcbomi/timetable', text: 'Timetable' },
-           { href: '../../quakep', text: 'Quakep' },
-          { href: '../../arcbomi/book-online', text: 'Онлайн кітап' },
-            { href: '../../arcbomi/birthday/show.html', text: 'Туған күн' },
-           { href: '../../club/index.html', text: 'Клубтар' },
-          //  { href: './youtube-edu', text: 'Youtube edu' },
-            { href: '../../formulas', text: 'Формулалар' },
-          //  { href: './donate', text: 'Donate' },
-           // { href: './document/zh-cn', text: 'Документ' },
+            { href: '/fizmat/quakep/index.html', text: 'Quakep' },
+            { href: '/fizmat/arcbomi/book-online/index.html', text: 'Онлайн кітап' },
+            { href: '/fizmat/arcbomi/birthday/show.html', text: 'Туған күн' },
+            { href: '/fizmat/club/index.html', text: 'Клубтар' },
+            { href: '/fizmat/formulas/index.html', text: 'Формулалар' }
         ];
 
         const navbarMenu = document.getElementById('navbar-menu');
         const navbarDropdown = document.querySelector('.dropdown-content');
 
         navbarItems.forEach(item => {
-            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
-            navbarMenu.insertAdjacentHTML('beforeend', link);
-
-            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
-            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+            navbarMenu.insertAdjacentHTML(
+                'beforeend',
+                `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`
+            );
+            navbarDropdown.insertAdjacentHTML(
+                'beforeend',
+                `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`
+            );
         });
 
-        // Fetch data from book_list.json
-        fetch('./book_list.json')
+        fetch('/fizmat/arcbomi/book-online/book_list.json')
             .then(response => response.json())
             .then(books => {
                 const bookContainer = document.getElementById('bookContainer');
                 const gradeSelect = document.getElementById('gradeSelect');
                 const searchBox = document.getElementById('searchBox');
 
-                // Extract unique grades (group) from books
                 const grades = [...new Set(books.map(book => book.group))];
-
-                // Populate gradeSelect options dynamically (no "all grade")
                 grades.forEach(grade => {
                     const option = document.createElement('option');
                     option.value = grade;
-                    option.textContent = `${grade}`;
+                    option.textContent = grade;
                     gradeSelect.appendChild(option);
                 });
 
-                // Set initial value to 7th grade
-                gradeSelect.value = '7'; // Adjust this value based on your actual grade representation
+                gradeSelect.value = grades[0];
 
-                // Function to display books
                 function displayBooks(filteredBooks) {
-                    bookContainer.innerHTML = ''; // Clear previous results
+                    bookContainer.innerHTML = '';
                     filteredBooks.forEach(book => {
                         const bookCard = `
                         <div class="card book-card bg-gray-800 shadow-xl flex flex-col">
                             <figure class="relative flex-grow">
                                 <a href="${book.download_page}" target="_blank">
                                     <div class="bg-white w-full h-56 flex items-center justify-center overflow-hidden">
-                                         <img src="${book.image}" alt="${book.name}" class="w-full h-full object-cover">
+                                        <img src="${book.image}" alt="${book.name}" class="w-full h-full object-cover">
                                     </div>
                                 </a>
                                 <a href="${book.preview_page}" target="_blank" class="absolute top-2 left-2 bg-gray-900 text-white p-2 rounded-full">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </figure>
-                            <div class="card-body p-2"> <!-- Reduced padding -->
-                                <h2 class="card-title text-center text-sm">${book.name}</h2> <!-- Reduced font size -->
+                            <div class="card-body p-2">
+                                <h2 class="card-title text-center text-sm">${book.name}</h2>
                             </div>
                         </div>`;
                         bookContainer.innerHTML += bookCard;
                     });
                 }
 
-                // Initial load - show books for 7th grade
-                const initialFilteredBooks = books.filter(book => book.group == '7'); // Adjust to your actual grade representation
-                displayBooks(initialFilteredBooks);
-
-                // Function to filter books based on both search and grade selection
                 function filterBooks() {
                     const selectedGrade = gradeSelect.value;
                     const searchTerm = searchBox.value.toLowerCase();
-
-                    const filteredBooks = books.filter(book => {
-                        const matchesGrade = book.group == selectedGrade; // No need for empty check
-                        const matchesSearch = book.name.toLowerCase().includes(searchTerm);
-                        return matchesGrade && matchesSearch;
-                    });
-
+                    const filteredBooks = books.filter(book =>
+                        book.group == selectedGrade && book.name.toLowerCase().includes(searchTerm)
+                    );
                     displayBooks(filteredBooks);
                 }
 
-                // Event listeners for search and grade filter
+                filterBooks();
                 gradeSelect.addEventListener('change', filterBooks);
                 searchBox.addEventListener('input', filterBooks);
             })
             .catch(error => {
                 console.error('Error fetching book_list:', error);
-                alert('ERROR Fizmat Book: ' + error.message); // Show error alert
+                alert('ERROR Fizmat Book: ' + error.message);
             });
     </script>
 
 </body>
-
 </html>

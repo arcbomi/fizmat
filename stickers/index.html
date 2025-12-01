@@ -9,20 +9,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes bounceIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.7;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -31,19 +20,14 @@
     <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4 py-2">
             <a id="navbar-brand"
-                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2"
-                href="../../fizmat/index.html">
+               class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2"
+               href="../index.html">
                 <img src="../fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
                 <span>FizMat by Quakep</span>
             </a>
 
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto"></div>
 
-            <!-- Full Menu for Desktop -->
-            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
-                <!-- JavaScript will populate this section -->
-            </div>
-
-            <!-- Hamburger Icon for Mobile -->
             <div class="dropdown lg:hidden ml-auto">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -52,49 +36,41 @@
                             d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </label>
-                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
-                    <!-- JavaScript will populate this section -->
-                </ul>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0"></ul>
             </div>
         </div>
     </nav>
 
-    <!-- Stickers Header -->
     <section class="py-16 bg-gray-900">
         <h2 class="text-4xl font-bold text-blue-300 mb-1 text-center m-1 lg:text-6xl">Asemay Stickers</h2>
     </section>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 py-1">
 
-        <!-- Support Us Message -->
         <section class="text-center mb-8 px-4">
             <p class="text-lg md:text-xl text-gray-400 mx-auto max-w-3xl bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg">
                 Біздің стикерлерді сатып алу арқылы бізге қолдау көрсетіңіз! Кез келген стикерді басу арқылы жүктей аласыз. Қолдауыңызға рахмет!
             </p>
         </section>
 
-        <!-- Stickers Carousel (Mobile) -->
         <section class="block md:hidden mb-8">
             <div id="sticker-carousel" class="carousel flex overflow-x-auto space-x-4 py-4"></div>
         </section>
 
-        <!-- Stickers Grid (Desktop) -->
         <section
             class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 px-4 md:px-8 lg:px-12 mb-12"
             id="sticker-grid">
         </section>
 
-        <!-- Buy Stickers Button -->
         <section class="text-center mt-12 px-4">
-            <a href="mailto:arcbomi@gmail.com?subject=%5Bfizmat-stickers%5DSticker%20Inquiry&body=Hello,%0AI%20am%20interested%20in%20the%20following%20stickers:%0A(delete%20what%20you%20don't%20want)%0A1.%20Sticker%201%0A2.%20Sticker%202%0A3.%20Sticker%203%0A4.%20Sticker%204%0A5.%20Sticker%205%0A6.%20Sticker_Ulas%0A%0AThank%20you!" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-400 transition-colors">
+            <a href="mailto:arcbomi@gmail.com?subject=%5Bfizmat-stickers%5DSticker%20Inquiry&body=Hello,%0AI%20am%20interested%20in%20the%20following%20stickers:%0A(delete%20what%20you%20don't%20want)%0A1.%20Sticker%201%0A2.%20Sticker%202%0A3.%20Sticker%203%0A4.%20Sticker%204%0A5.%20Sticker%205%0A6.%20Sticker_Ulas%0A%0AThank%20you!"
+               class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-400 transition-colors">
                 Сатып алу
             </a>
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
         <div class="container mx-auto">
             <p>&copy;2025 НАО РФМШ FizMat-Quakep</p>
@@ -102,27 +78,28 @@
     </footer>
 
     <script>
-
         const navbarItems = [
             { href: '../quakep/index.html', text: 'Quakep' },
             { href: '../arcbomi/book-online/index.html', text: 'Онлайн кітап' },
             { href: '../arcbomi/birthday/show.html', text: 'Туған күн' },
             { href: '../club/index.html', text: 'Клубтар' },
-            { href: '../formulas/index.html', text: 'Формулалар' },
+            { href: '../formulas/index.html', text: 'Формулалар' }
         ];
-        
-        // Populate Navbar
+
         const navbarMenu = document.getElementById('navbar-menu');
         const navbarDropdown = document.querySelector('.dropdown-content');
 
         navbarItems.forEach(item => {
-            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
-            navbarMenu.insertAdjacentHTML('beforeend', link);
-            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
-            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+            navbarMenu.insertAdjacentHTML(
+                'beforeend',
+                `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`
+            );
+            navbarDropdown.insertAdjacentHTML(
+                'beforeend',
+                `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`
+            );
         });
 
-        // Stickers data
         const stickers = [
             { id: 1, img: '1.png', downloadName: 'Sticker1.png' },
             { id: 2, img: '2.png', downloadName: 'Sticker2.png' },
@@ -132,7 +109,6 @@
             { id: 6, img: '6.png', downloadName: 'Sticker_Ulas.png' }
         ];
 
-        // Function to generate carousel sticker HTML
         function createCarouselStickerTemplate(sticker) {
             return `
                 <a href="${sticker.img}" download="${sticker.downloadName}"
@@ -142,7 +118,6 @@
                 </a>`;
         }
 
-        // Function to generate grid sticker HTML
         function createGridStickerTemplate(sticker) {
             return `
                 <a href="${sticker.img}" download="${sticker.downloadName}"
@@ -152,13 +127,11 @@
                 </a>`;
         }
 
-        // Populate sticker carousel for mobile
         const carouselContainer = document.getElementById('sticker-carousel');
         stickers.forEach(sticker => {
             carouselContainer.innerHTML += createCarouselStickerTemplate(sticker);
         });
 
-        // Populate sticker grid for desktop
         const gridContainer = document.getElementById('sticker-grid');
         stickers.forEach(sticker => {
             gridContainer.innerHTML += createGridStickerTemplate(sticker);

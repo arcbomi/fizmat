@@ -93,7 +93,7 @@
                     <div class="camera"></div>
                     <div class="display">
                         <div class="artboard artboard-demo phone-1">
-                            <img src="app-image.png" alt="Fizmat App" class="w-full h-auto rounded-lg shadow-lg">
+                            <img src="./app-image.png" alt="Fizmat App" class="w-full h-auto rounded-lg shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                 Бұрын, 2022-шы жылғы түлек Fizmat App деген сыйқырды жаратқан
             </h2>
 
-            <img src="app-image.png" alt="Fizmat App" class="w-1/2 h-64 object-cover rounded-lg mb-6">
+            <img src="./app-image.png" alt="Fizmat App" class="w-1/2 h-64 object-cover rounded-lg mb-6">
 
             <p class="text-md text-gray-400 mb-6">
                 Бірақ, өкінішке орай, ол желмен өз жеріне кеттіп, бізді бұл
@@ -138,31 +138,24 @@
 
     <script>
         const navbarItems = [
-          //  { href: './stickers', text: 'Стикер' },
-          //  { href: './app', text: 'Апп' },
-            // { href: './arcbomi', text: 'Arcbomi команда' },
-         //   { href: './arcbomi/timetable', text: 'Timetable' },
-           { href: '../quakep', text: 'Quakep' },
-          { href: '../arcbomi/book-online', text: 'Онлайн кітап' },
-            { href: '../arcbomi/birthday/show.html', text: 'Туған күн' },
-           { href: '../club/index.html', text: 'Клубтар' },
-          //  { href: './youtube-edu', text: 'Youtube edu' },
-            { href: '../formulas/index.html', text: 'Формулалар' },
-          //  { href: './donate', text: 'Donate' },
-           // { href: './document/zh-cn', text: 'Документ' },
+            { href: "../quakep/index.html", text: "Quakep" },
+            { href: "../arcbomi/book-online/index.html", text: "Онлайн кітап" },
+            { href: "../arcbomi/birthday/show.html", text: "Туған күн" },
+            { href: "../club/index.html", text: "Клубтар" },
+            { href: "../formulas/index.html", text: "Формулалар" },
         ];
 
-        const navbarMenu = document.getElementById('navbar-menu');
-        const navbarDropdown = document.querySelector('.dropdown-content');
+        const navbarMenu = document.getElementById("navbar-menu");
+        const navbarDropdown = document.querySelector(".dropdown-content");
 
-        navbarItems.forEach(item => {
+        navbarItems.forEach((item) => {
             navbarMenu.insertAdjacentHTML(
-                'beforeend',
+                "beforeend",
                 `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`
             );
 
             navbarDropdown.insertAdjacentHTML(
-                'beforeend',
+                "beforeend",
                 `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`
             );
         });

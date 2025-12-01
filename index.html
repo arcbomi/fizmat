@@ -13,13 +13,11 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         .fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
         }
@@ -28,22 +26,16 @@
 
 <body class="bg-gray-900 text-gray-300">
 
-    <!-- Navbar -->
     <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4 py-2">
             <a id="navbar-brand"
-                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="#">
-                <!-- fizmat Logo -->
+                class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="./">
                 <img src="fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
                 <span>FizMat by Quakep</span>
             </a>
 
-            <!-- Full Menu for Desktop -->
-            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto">
-                <!-- JavaScript will populate this section -->
-            </div>
+            <div id="navbar-menu" class="hidden lg:flex space-x-4 ml-auto"></div>
 
-            <!-- Hamburger Icon for Mobile -->
             <div class="dropdown lg:hidden ml-auto">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -52,44 +44,32 @@
                             d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </label>
-                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0">
-                    <!-- JavaScript will populate this section -->
-                </ul>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gray-700 rounded-box w-52 right-0"></ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="h-[80vh] lg:h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
         <div class="absolute inset-0">
-            <div class="h-64 w-64 rounded-full bg-blue-500 opacity-20 blur-3xl animate-ping absolute bottom-10 left-10">
-            </div>
-            <div class="h-48 w-48 rounded-full bg-blue-600 opacity-25 blur-2xl animate-ping absolute top-20 right-20">
-            </div>
+            <div class="h-64 w-64 rounded-full bg-blue-500 opacity-20 blur-3xl animate-ping absolute bottom-10 left-10"></div>
+            <div class="h-48 w-48 rounded-full bg-blue-600 opacity-25 blur-2xl animate-ping absolute top-20 right-20"></div>
         </div>
 
         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-blue-900 to-gray-900 opacity-60"></div>
         <div class="relative text-center fade-in-up">
             <h1 class="text-6xl font-extrabold text-blue-400 mb-4 animate-pulse">Қош келдіңіз</h1>
-            <p class="text-2xl text-gray-300 mb-8 animate-fadeIn">FizMat-Quakep сайтында оқу процесін жеңілдететін пайдалы ресурстар мен құралдар бар.
-            </p>
-            <div id="hero-buttons" class="flex flex-wrap justify-center gap-6">
-                <!-- JavaScript will populate this section -->
-            </div>
+            <p class="text-2xl text-gray-300 mb-8 animate-fadeIn">FizMat-Quakep сайтында оқу процесін жеңілдететін пайдалы ресурстар мен құралдар бар.</p>
+            <div id="hero-buttons" class="flex flex-wrap justify-center gap-6"></div>
         </div>
     </section>
 
-    <!-- Sections -->
     <section class="py-16 bg-gray-800">
         <div class="container mx-auto text-center fade-in-up">
             <h2 class="text-4xl font-bold text-blue-300 mb-10">Іздегеніңіз бар болар?</h2>
-            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- JavaScript will populate this section -->
-            </div>
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer p-4 bg-gray-800 text-gray-400 text-center">
         <div class="container mx-auto">
             <p>&copy;2025 НАО РФМШ FizMat-Quakep</p>
@@ -97,76 +77,57 @@
     </footer>
 
     <script>
-        // Data for Navbar and Cards
-
-        /*
-        Стикер
-        Апп
-        Arcbomi команда
-        Youtube edu 
-        Формула
-        Ақша бер
-        Документ
-        */
-        // Navbar
         const navbarItems = [
-            { href: '/fizmat/quakep', text: 'Quakep' },
-            { href: '/fizmat/arcbomi/book-online', text: 'Онлайн кітап' },
-            { href: '/fizmat/arcbomi/birthday/show.html', text: 'Туған күн' },
-            { href: '/fizmat/club/index.html', text: 'Клубтар' },
-            { href: '/fizmat/formulas/index.html', text: 'Формулалар' }
+            { href: 'quakep', text: 'Quakep' },
+            { href: 'arcbomi/book-online', text: 'Онлайн кітап' },
+            { href: 'arcbomi/birthday/show.html', text: 'Туған күн' },
+            { href: 'club/index.html', text: 'Клубтар' },
+            { href: 'formulas/index.html', text: 'Формулалар' }
         ];
 
-        // Hero Buttons
         const heroButtons = [
-            { href: '/fizmat/stickers', text: 'Asemay Стикерлері', class: 'btn-primary' },
-            { href: '/fizmat/formulas/index.html', text: 'Формулалар', class: 'btn-secondary' },
-            { href: '/fizmat/arcbomi/book-online', text: 'Кітаптар', class: 'btn-accent' },
+            { href: 'stickers', text: 'Asemay Стикерлері', class: 'btn-primary' },
+            { href: 'formulas/index.html', text: 'Формулалар', class: 'btn-secondary' },
+            { href: 'arcbomi/book-online', text: 'Кітаптар', class: 'btn-accent' }
         ];
 
-        // Cards
         const cardItems = [
-            { href: '/fizmat/stickers', title: 'Стикерлер', description: 'Бізді қолдағыңыз келе ме? Қарап көр.', class: 'btn-primary' },
-            { href: '/fizmat/app', title: 'FizMat App', description: 'Мектеп арасындағы қосымша, Kundelik GPA есептегіш.', class: 'btn-secondary' },
-            { href: '/fizmat/club/index.html', title: 'Клубтар', description: 'Мектеп клубтары', class: 'btn-error' },
-            { href: '/fizmat/arcbomi/book-online', title: 'Онлайн кітап', description: 'Онлайн түрде кітап алыңыз', class: 'btn-info' },
-            { href: '/fizmat/formulas/index.html', title: 'Формулалар', description: 'Формулалар жинағы.', class: 'btn-warning' },
-            { href: '/fizmat/arcbomi/birthday/show.html', title: 'Туған күндер', description: 'Бүгін мектеп оқушыларының туған күндері', class: 'btn-accent' }
+            { href: 'stickers', title: 'Стикерлер', description: 'Бізді қолдағыңыз келе ме? Қарап көр.', class: 'btn-primary' },
+            { href: 'app', title: 'FizMat App', description: 'Мектеп арасындағы қосымша, Kundelik GPA есептегіш.', class: 'btn-secondary' },
+            { href: 'club/index.html', title: 'Клубтар', description: 'Мектеп клубтары', class: 'btn-error' },
+            { href: 'arcbomi/book-online', title: 'Онлайн кітап', description: 'Онлайн түрде кітап алыңыз', class: 'btn-info' },
+            { href: 'formulas/index.html', title: 'Формулалар', description: 'Формулалар жинағы.', class: 'btn-warning' },
+            { href: 'arcbomi/birthday/show.html', title: 'Туған күндер', description: 'Бүгін мектеп оқушыларының туған күндері', class: 'btn-accent' }
         ];
 
-        // Populate Navbar
         const navbarMenu = document.getElementById('navbar-menu');
         const navbarDropdown = document.querySelector('.dropdown-content');
 
         navbarItems.forEach(item => {
-            const link = `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`;
-            navbarMenu.insertAdjacentHTML('beforeend', link);
-            const dropdownItem = `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`;
-            navbarDropdown.insertAdjacentHTML('beforeend', dropdownItem);
+            navbarMenu.insertAdjacentHTML('beforeend',
+                `<a class="btn btn-ghost text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a>`);
+            navbarDropdown.insertAdjacentHTML('beforeend',
+                `<li><a class="text-gray-300 hover:text-blue-400" href="${item.href}">${item.text}</a></li>`);
         });
 
-        // Populate Hero Buttons
         const heroButtonsContainer = document.getElementById('hero-buttons');
         heroButtons.forEach(button => {
-            const btn = `<a href="${button.href}" class="btn btn-outline ${button.class} w-48 text-center hover:bg-blue-600 hover:text-white transition-colors">${button.text}</a>`;
-            heroButtonsContainer.insertAdjacentHTML('beforeend', btn);
+            heroButtonsContainer.insertAdjacentHTML('beforeend',
+                `<a href="${button.href}" class="btn btn-outline ${button.class} w-48 text-center hover:bg-blue-600 hover:text-white transition-colors">${button.text}</a>`);
         });
 
-
-        // Populate Cards
         const cardContainer = document.getElementById('card-container');
         cardItems.forEach(card => {
-            const cardElement = `
+            cardContainer.insertAdjacentHTML('beforeend', `
                 <div class="card bg-gray-900 hover:bg-gray-800 transform hover:scale-105 transition-transform shadow-md mx-4">
                     <div class="card-body">
                         <h3 class="card-title text-blue-400">${card.title}</h3>
                         <p class="text-gray-400">${card.description}</p>
                         <a href="${card.href}" class="btn ${card.class} w-full">Көбірек білу</a>
                     </div>
-                </div>`;
-            cardContainer.insertAdjacentHTML('beforeend', cardElement);
+                </div>`);
         });
     </script>
 </body>
- 
+
 </html>
