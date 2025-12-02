@@ -19,10 +19,10 @@
 <body class="bg-gray-900 text-gray-300">
     <nav class="navbar bg-gray-800 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4 py-2">
+
             <a id="navbar-brand"
-               class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2"
-               href="/index.html">
-                <img src="/assets/fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
+            class="text-2xl font-bold text-blue-400 hover:text-blue-500 flex items-center space-x-2" href="/fizmat/index.html">
+                <img src="/fizmat/assets/fizmat.svg" alt="fizmat Logo" class="w-8 h-8">
                 <span>FizMat by Quakep</span>
             </a>
 
@@ -63,7 +63,7 @@
         </section>
 
         <section class="text-center mt-12 px-4">
-            <a href="mailto:arcbomi@gmail.com?subject=%5Bfizmat-stickers%5DSticker%20Inquiry&body=Hello,%0AI%20am%20interested%20in%20the%20following%20stickers:%0A(delete%20what%20you%20don't%20want)%0A1.%20Sticker%201%0A2.%20Sticker%202%0A3.%20Sticker%203%0A4.%20Sticker%204%0A5.%20Sticker%205%0A6.%20Sticker_Ulas%0A%0AThank%20you!"
+            <a href="mailto:arcbomi@gmail.com?subject=%5Bfizmat-stickers%5DSticker%20Inquiry"
                class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-400 transition-colors">
                 Сатып алу
             </a>
@@ -79,11 +79,11 @@
 
     <script>
         const navbarItems = [
-            { href: '/quakep/index.html', text: 'Quakep' },
-            { href: '/arcbomi/book-online/index.html', text: 'Онлайн кітап' },
-            { href: '/arcbomi/birthday/show.html', text: 'Туған күн' },
-            { href: '/club/index.html', text: 'Клубтар' },
-            { href: '/formulas/index.html', text: 'Формулалар' }
+            { href: '/fizmat/quakep/', text: 'Quakep' },
+            { href: '/fizmat/book-online/', text: 'Онлайн кітап' },
+            { href: '/fizmat/birthday/show.html', text: 'Туған күн' },
+            { href: '/fizmat/club/index.html', text: 'Клубтар' },
+            { href: '/fizmat/formulas/index.html', text: 'Формулалар' }
         ];
 
         const navbarMenu = document.getElementById('navbar-menu');
@@ -101,12 +101,12 @@
         });
 
         const stickers = [
-            { id: 1, img: '1.png', downloadName: 'Sticker1.png' },
-            { id: 2, img: '2.png', downloadName: 'Sticker2.png' },
-            { id: 3, img: '3.png', downloadName: 'Sticker3.png' },
-            { id: 4, img: '4.png', downloadName: 'Sticker4.png' },
-            { id: 5, img: '5.png', downloadName: 'Sticker5.png' },
-            { id: 6, img: '6.png', downloadName: 'Sticker_Ulas.png' }
+            { id: 1, img: '/fizmat/stickers/1.png', downloadName: 'Sticker1.png' },
+            { id: 2, img: '/fizmat/stickers/2.png', downloadName: 'Sticker2.png' },
+            { id: 3, img: '/fizmat/stickers/3.png', downloadName: 'Sticker3.png' },
+            { id: 4, img: '/fizmat/stickers/4.png', downloadName: 'Sticker4.png' },
+            { id: 5, img: '/fizmat/stickers/5.png', downloadName: 'Sticker5.png' },
+            { id: 6, img: '/fizmat/stickers/6.png', downloadName: 'Sticker_Ulas.png' }
         ];
 
         function createCarouselStickerTemplate(sticker) {

@@ -8,7 +8,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-            const targetUrl = '/fizmat/arcbomi/birthday/index.html'; // куда редиректим
+            const targetUrl = '/fizmat/birthday/index.html';
 
             if (isMobile && !window.location.pathname.endsWith('index.html')) {
                 window.location.href = targetUrl;
