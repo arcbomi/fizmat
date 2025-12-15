@@ -79,27 +79,17 @@
             },
         };
     </script>
+        <!-- katex (load before docsify so plugin can use it) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-    <!-- docsify的js依赖 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-    <!-- 搜索功能支持 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <!-- image zoom -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/zoom-image.min.js"></script>
-    <!-- flooter -->
-    <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
-    <!-- 侧边栏折叠 -->
-    <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />-->
-    <!--<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>-->
-        <!-- katex -->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
-        <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
-
-        <!-- Render math after Docsify finishes rendering -->
         <script>
             function renderMath() {
-                if (typeof renderMathInElement !== 'function') return;
+                if (typeof renderMathInElement !== 'function') {
+                    console.warn('KaTeX auto-render not available yet');
+                    return;
+                }
                 try {
                     renderMathInElement(document.getElementById('app'), {
                         delimiters: [
@@ -115,14 +105,35 @@
                 }
             }
 
+            // Register a docsify plugin to render math after each page render
             window.$docsify = window.$docsify || {};
             window.$docsify.plugins = (window.$docsify.plugins || []).concat(function(hook, vm) {
-                hook.doneEach(function() { renderMath(); });
+                hook.doneEach(function() {
+                    // allow KaTeX to load if it's still pending
+                    setTimeout(renderMath, 50);
+                });
             });
+
+            // Fallback: observe app changes and render
+            setTimeout(function() {
+                var target = document.getElementById('app');
+                if (!target) return;
+                var observer = new MutationObserver(function() { renderMath(); });
+                observer.observe(target, { childList: true, subtree: true });
+            }, 200);
         </script>
 
-
-
+        <!-- docsify的js依赖 -->
+        <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <!-- 搜索功能支持 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <!-- image zoom -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/zoom-image.min.js"></script>
+    <!-- flooter -->
+    <script src="https://cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+    <!-- 侧边栏折叠 -->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>-->
 </body>
 
 </html>
